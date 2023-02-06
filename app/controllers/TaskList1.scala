@@ -9,7 +9,12 @@ import javax.inject._
 class TaskList1 @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
 
   def taskList = Action {
-    Ok("This works!")
+    val tasks = List("task1","task2","task3","sleep","eat")
+    Ok(views.html.taskList1(tasks))
+  }
+
+  def product(prodType: String, prodNum: Int) = Action {
+    Ok(s"Product type is : $prodType, product number is: $prodNum")
   }
 
 }

@@ -1,0 +1,11 @@
+@(tasks: Seq[String])
+
+@main("TaskList") {
+  <h2>TaskList</h2>
+
+  <ul>
+    @for(task <- tasks) {
+      <li>@task</li>
+    }
+  </ul>
+}
