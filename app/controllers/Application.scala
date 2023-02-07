@@ -11,4 +11,8 @@ class Application @Inject() (cc: ControllerComponents) extends AbstractControlle
   def index = Action {
     Ok(views.html.index())
   }
+
+   def product(prodType: String, prodNum: Int) = Action {
+     Ok{s"Product type is: $prodType, product number is: $prodNum"}
+   }
 }

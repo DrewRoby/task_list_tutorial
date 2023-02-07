@@ -5,7 +5,15 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.Application.index()
+GET     /productArgs                controllers.Application.product(prodType, prodNum: Int)
+GET     /product/:prodType/:prodNum controllers.Application.product(prodType, prodNum: Int)
+GET     /productRE/$prodType<[a-z]{2}\d\d>/:prodNum controllers.Application.product(prodType, prodNum: Int)
 
+
+GET     /validateGet1           controllers.TaskList1.validateLoginGet(username, password)
++ nocsrf
+POST    /validatePost1              controllers.TaskList1.validateLoginPost
+GET     /login1                     controllers.TaskList1.login
 GET     /taskList1                  controllers.TaskList1.taskList
 
 # Map static resources from the /public folder to the /assets URL path
