@@ -17,6 +17,8 @@ class TaskList1 @Inject() (cc: MessagesControllerComponents) extends MessagesAbs
     "Password" -> text(8)
   )(LoginData.apply)(LoginData.unapply))
 
+  val USER_CREATION_FAILED_ERROR = "User creation failed."
+
   def login = Action { implicit request =>
     Ok(views.html.login1(loginForm))
   }
@@ -45,7 +47,7 @@ class TaskList1 @Inject() (cc: MessagesControllerComponents) extends MessagesAbs
         if (TaskListInMemoryModel.createUser(ld.username, ld.password)) {
           Redirect(routes.TaskList1.taskList).withSession("username" -> ld.username)
         } else {
-          Redirect(routes.TaskList1.login).flashing("error" -> "User creation failed.")
+          Redirect(routes.TaskList1.login).flashing("error" -> USER_CREATION_FAILED_ERROR)
         })
   }
 
@@ -58,7 +60,7 @@ class TaskList1 @Inject() (cc: MessagesControllerComponents) extends MessagesAbs
       if (TaskListInMemoryModel.createUser(username, password)) {
         Redirect(routes.TaskList1.taskList).withSession("username" -> username)
       } else {
-        Redirect(routes.TaskList1.login).flashing("error" -> "Username is taken")
+        Redirect(routes.TaskList1.login).flashing("error" -> USER_CREATION_FAILED_ERROR)
       }
     }.getOrElse(Redirect(routes.TaskList1.login))
   }
