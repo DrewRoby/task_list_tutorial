@@ -5,6 +5,7 @@ import play.api.data.Forms._
 import play.api.data._
 import play.api.i18n._
 import play.api.mvc._
+import utilities.Errors._
 
 import javax.inject._
 
@@ -17,7 +18,7 @@ class TaskList1 @Inject() (cc: MessagesControllerComponents) extends MessagesAbs
     "Password" -> text(8)
   )(LoginData.apply)(LoginData.unapply))
 
-  val USER_CREATION_FAILED_ERROR = "User creation failed."
+
 
   def login = Action { implicit request =>
     Ok(views.html.login1(loginForm))

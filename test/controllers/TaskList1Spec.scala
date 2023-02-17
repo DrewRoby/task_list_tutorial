@@ -7,11 +7,11 @@ import org.scalatestplus.selenium.Chrome._
 import play.api.test.CSRFTokenHelper._
 import play.api.test.Helpers._
 import play.api.test._
+import utilities.Errors._
 
 //import com.marklewis.app.controllers.TaskList1.USER_CREATION_FAILED_ERROR  //How do I import a value from one of my controllers?  Or should that go somewhere else that both this script and the controller can acces it, and where is that?
 
 class TaskList1Spec extends PlaySpec with GuiceOneServerPerSuite with Injecting {
-  val USER_CREATION_FAILED_ERROR = "User creation failed."
 
   "The TaskList1 controller" should {
 

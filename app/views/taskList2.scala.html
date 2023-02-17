@@ -1,0 +1,18 @@
+@(tasks: Seq[String])
+
+<h2>TaskList</h2>
+
+<ul>
+    @for((task, i) <- tasks.zipWithIndex) {
+      <li onclick="deleteTask(@i)">@task</li>
+    }
+</ul>
+
+<form method="post" action="@routes.TaskList1.addTask">
+    <input type="text" name="newTask">
+    <input type="submit">
+</form>
+
+<div>
+    <a href="@routes.TaskList1.logout">Logout</a>
+</div>
