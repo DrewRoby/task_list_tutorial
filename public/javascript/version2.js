@@ -17,3 +17,8 @@ function createUser() {
 function deleteTask(index) {
   $("#contents").load("/deleteTask2?index=" + index)
   }
+
+function addTask() {
+  const task = $("#newTask").val()
+  $("#contents").load("/addTask2?task=" + task)
+  }
