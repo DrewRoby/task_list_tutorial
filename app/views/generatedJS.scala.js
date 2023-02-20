@@ -1,20 +1,11 @@
+@()
 
-
-const csrfToken = $("#csrfToken").val();
-const loginRoute = $("#loginRoute").val()
-const validateRoute = $("#validateRoute").val();
-
-$("#contents").load(loginRoute)
+$("#contents").load("@routes.TaskList2.login")
 
 function login() {
   const username = $("#loginName").val()
   const password = $("#loginPass").val()
-  $.post(
-      validateRoute,
-      { username, password, csrfToken },
-      data => {
-          $("#contents").html(data)
-      } );
+  $("#contents").load("/validate2?username="+username+"&password="+password)
   }
 
 function createUser() {
