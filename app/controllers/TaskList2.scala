@@ -23,8 +23,8 @@ class TaskList2 @Inject() (cc: ControllerComponents) extends AbstractController(
   def taskList = Action { implicit request =>
     val usernameOption = request.session.get("username")
     usernameOption.map { username =>
-      Ok(views.html.taskList2(TaskListInMemoryModel.getTasks(username)))
-    }.getOrElse(Ok(views.html.login2()))
+      Ok(views.html.version2Main(routes.TaskList2.taskList.toString))
+    }.getOrElse(Ok(views.html.version2Main(routes.TaskList2.login.toString)))
   }
 
   def validate = Action { implicit request =>

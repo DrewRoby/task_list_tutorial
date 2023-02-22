@@ -1,0 +1,45 @@
+@()(implicit request: RequestHeader, flash: Flash)
+
+@main("Task List (Version 3)") {
+    <div id="contents"></div>
+
+    <div id="login-section">
+        <h2>Login:</h2>
+        Username: <input type="text" id="loginName">
+        <br>
+        Password: <input type="password" id="loginPass">
+        <br>
+        <button onclick="login()">Login</button>
+
+        <h2>New User:</h2>
+        Username: <input type="text"  id="createName">
+        <br>
+        Password: <input type="password" id="createPass">
+        <br>
+        <button onclick="createUser()">Create User</button>
+    </div>
+
+    <div id="task-section" hidden>
+        <h2>TaskList</h2>
+
+        <ul id="task-list">
+        </ul>
+
+        <input type="text" id="newTask">
+        <button onclick="addTask()">Add Task</button>
+
+        <div>
+            <a href="@routes.TaskList2.logout">Logout</a>
+        </div>
+    </div>
+
+    <input type="hidden" id="csrfToken" value="@helper.CSRF.getToken.value">
+    <input type="hidden" id="validateRoute" value="@routes.TaskList3.validate">
+    <input type="hidden" id="tasksRoute" value="@routes.TaskList3.taskList">
+    <input type="hidden" id="createRoute" value="@routes.TaskList2.createUser(_,_)">
+    <input type="hidden" id="deleteRoute" value="@routes.TaskList2.delete(_)">
+    <input type="hidden" id="addRoute" value="@routes.TaskList2.addTask(_)">
+
+<script src="@routes.Assets.versioned("javascript/version3.js")">
+<!--    <script src="@routes.TaskList2.generatedJS">-->
+}
