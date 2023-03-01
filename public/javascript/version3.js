@@ -28,7 +28,42 @@ function login() {
   }
 
 function loadTasks() {
+  const ul = document.getElementById("task-list");
+  ul.innerHTML = "";
   fetch(tasksRoute).then(res => res.json()).then(tasks => {
-    
-  })
+    for (let i = 0; i < tasks.length; ++i) {
+      const li = document.createElement("li");
+      const text = document.createTextNode(tasks[i]);
+      li.appendChild(text);
+      li.onclick = e => {
+        fetch(deleteRoute, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json', 'Csrf-Token': csrfToken},
+            body: JSON.stringify(i)
+          }).then(res => res.json()).then(data => {
+            if(data) {
+              loadTasks();
+            } else {
+            // TODO
+          }
+      });
+      }
+      ul.appendChild(li);
+    }
+  });
 }
+
+function addTask() {
+  const task = document.getElementById("newTask").value;
+  fetch(addRoute, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Csrf-Token': csrfToken},
+      body: JSON.stringify(task)
+      }).then(res => res.json()).then(data => {
+        if(data) {
+          loadTasks();
+        } else {
+        // TODO
+        }
+      });
+  }

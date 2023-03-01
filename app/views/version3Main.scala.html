@@ -1,6 +1,6 @@
 @()(implicit request: RequestHeader, flash: Flash)
 
-@main("Task List (Version 3)") {
+@main("V3 Task List") {
     <div id="contents"></div>
 
     <div id="login-section">
@@ -37,8 +37,8 @@
     <input type="hidden" id="validateRoute" value="@routes.TaskList3.validate">
     <input type="hidden" id="tasksRoute" value="@routes.TaskList3.taskList">
     <input type="hidden" id="createRoute" value="@routes.TaskList2.createUser(_,_)">
-    <input type="hidden" id="deleteRoute" value="@routes.TaskList2.delete(_)">
-    <input type="hidden" id="addRoute" value="@routes.TaskList2.addTask(_)">
+    <input type="hidden" id="deleteRoute" value="@routes.TaskList3.delete">
+    <input type="hidden" id="addRoute" value="@routes.TaskList3.addTask">
 
 <script src="@routes.Assets.versioned("javascript/version3.js")">
 <!--    <script src="@routes.TaskList2.generatedJS">-->
