@@ -11,4 +11,8 @@ inputField.onkeydown = (event) => {
     }
   }
 
-socket.onopen = () => socket.send("Test message")
+socket.onopen = (event) => socket.send("Test message")
+
+socket.onmessage = (event) => {
+  outputArea.value += '\n' + event.data
+}
