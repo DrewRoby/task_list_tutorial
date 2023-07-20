@@ -1,4 +1,4 @@
-console.log("Running version 4")
+console.log("Running version 5")
 
 const ce = React.createElement
 const csrfToken = document.getElementById("csrfToken").value;
@@ -9,7 +9,7 @@ const deleteRoute = document.getElementById("deleteRoute").value;
 const addRoute = document.getElementById("addRoute").value;
 const logoutRoute = document.getElementById("logoutRoute").value;
 
-class Version4MainComponent extends React.Component {
+class Version5MainComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loggedIn: false };
@@ -124,7 +124,7 @@ class TaskListComponent extends React.Component {
       'Task List',
       ce('br'),
       ce('ul', null,
-        this.state.tasks.map((task, index) => ce('li', { key: index, onClick: e => this.handleDeleteClick(index) }, task))
+        this.state.tasks.map(task => ce('li', { key: task.id, onClick: e => this.handleDeleteClick(task.id) }, task.text))
       ),
       ce('br'),
       ce('div', null,
@@ -179,42 +179,6 @@ class TaskListComponent extends React.Component {
 }
 
 ReactDOM.render(
-  ce(Version4MainComponent, null, null),
+  ce(Version5MainComponent, null, null),
   document.getElementById('react-root')
  );
-
-/*
-function StatelessHello(props) {
-  return ce('div', null, `Hello ${props.toWhat}`);
-}
-
-class Hello extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { clickCount: 0 };
-  }
-
-  render() {
-    return ce('div', {onClick: (e) => this.clickHandler(e)}, `Hello ${this.props.toWhat} - click count ${this.state.clickCount}`)
-  }
-
-  clickHandler(e) {
-    this.setState({clickCount: this.state.clickCount + 1})
-  }
-}
-
-class SimpleForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {textInput: ""}
-  }
-  render() {
-    return ce('input', {type: "text", value: this.state.textInput, onChange: (e) => this.changeHandler(e)});
-  }
-
-  changeHandler(e) {
-    this.setState({textInput: event.target.value});
-  }
-}
-
-*/

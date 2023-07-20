@@ -49,6 +49,15 @@ GET     /chatSocket                 controllers.WebSocketChat.socket
 #Version 4 routes
 GET     /load4                      controllers.TaskList4.load
 
+#Version 5 routes
+GET     /load5                      controllers.TaskList5.load
+POST    /validate5                  controllers.TaskList5.validate
+POST    /create5                    controllers.TaskList5.createUser
+GET     /taskList5                  controllers.TaskList5.taskList
+POST    /addTask5                   controllers.TaskList5.addTask
+POST    /deleteTask5                controllers.TaskList5.delete
+GET     /logout5                    controllers.TaskList5.logout
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
